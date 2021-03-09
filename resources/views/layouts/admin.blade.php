@@ -13,6 +13,7 @@
     @stack('prepend-style')
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="{{url('style/main.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
     @stack('addon-style')
   </head>
 
@@ -25,9 +26,9 @@
             <img src="/images/admin.png" class="my-4" width="150px" alt="">
           </div>
           <div class="list-group list-group-flush">
-            <a href="{{route('dashboard-admin')}}" class="list-group-item list-group-item-action active">Dashboard</a>
+            <a href="{{route('dashboard-admin')}}" class="list-group-item list-group-item-action">Dashboard</a>
             <a href="#" class="list-group-item list-group-item-action">Products</a>
-            <a href="#" class="list-group-item list-group-item-action">Categori es</a>
+            <a href="{{route('categories.index')}}" class="list-group-item list-group-item-action {{request()->is('admin/categories*') ? 'active' : ''}}">Categories</a>
             <a href="#" class="list-group-item list-group-item-action">Transactions</a>
             <a href="#" class="list-group-item list-group-item-action">Users</a>
             <a href="/index.html" class="list-group-item list-group-item-action">Sign Out</a>
@@ -90,9 +91,9 @@
 
     <!-- Bootstrap core JavaScript -->
     @stack('prepend-script')
-    <script src="{{ mix('js/app.js') }}"></script>
-    <script src="/vendor/jquery/jquery.slim.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();

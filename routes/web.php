@@ -38,8 +38,9 @@ Route::get('/dashboard/transactions/details/{id}', [DashboardTransactionControll
 
 Route::get('/dashboard/settings', [DashboardSettingController::class, 'store'])->name('dashboard-settings-store');
 Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])->name('dashboard-settings-account');
-Route::prefix('admin')->namespace('Admin')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\DasboardController::class, 'index'])->name('dashboard-admin');
+    Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
 });
 
 Route::get('/debug-sentry', function () {
