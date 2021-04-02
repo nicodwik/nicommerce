@@ -7,21 +7,32 @@
             <div class="container">
             <div class="row align-items-center row-login">
                 <div class="col-lg-6 text-center">
-                <img src="/images/auth-placeholder.jpg" class="w-50 mb-4 mb-lg-none" alt="">
+                    <img src="/images/auth-placeholder.jpg" class="w-50 mb-4 mb-lg-none" alt="">
                 </div>
                 <div class="col-lg-5">
-                <h2>Belanja kebtuhan utama, <br> jadi lebih mudah</h2>
-                <form action="" class="mt-3">
+                    <h2>Belanja kebtuhan utama, <br> jadi lebih mudah</h2>
+                <form action="{{route('login')}}" method="POST" class="mt-3">
+                    @csrf
                     <div class="form-group">
-                    <label for="">Email Address</label>
-                    <input type="email" class="form-control w-75">
+                        <label for="">Email Address</label>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror  w-75" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="password" class="form-control w-75">
+                        <label for="">Password</label>
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror w-75" name="password" required autocomplete="current-password">
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    <a href="/dashboard.html" class="btn btn-success btn-block w-75 mt-4">Sign in to my Account</a>
-                    <a href="/register.html" class="btn btn-signup btn-block w-75 mt-2">Sign up</a>
+                    <button type="submit" class="btn btn-success btn-block w-75 mt-4">Sign in to my Account</button>
+                    <a href="{{route('register')}}" class="btn btn-signup btn-block w-75 mt-2">Sign up</a>
                 </form>
                 </div>
             </div>

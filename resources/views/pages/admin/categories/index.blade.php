@@ -19,7 +19,7 @@
                   <div class="card-body">
                     <a href="{{route('categories.create')}}" class="btn btn-primary mb-3">+ Tambah Kategori Baru</a>
                     <div class="table-responsive">
-                      <table class="table-hover scroll-horizontal-vertical w-100" id="crudTable">
+                      <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                         <thead>
                           <tr>
                             <td>ID</td>

@@ -13,4 +13,14 @@ class Category extends Model
     protected $table = 'categories';
     protected $guarded = [];
     protected $hidden = [];
+
+    /**
+     * Get all of the comments for the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'categories_id', 'id');
+    }
 }

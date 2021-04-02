@@ -27,10 +27,11 @@
           </div>
           <div class="list-group list-group-flush">
             <a href="{{route('dashboard-admin')}}" class="list-group-item list-group-item-action">Dashboard</a>
-            <a href="#" class="list-group-item list-group-item-action">Products</a>
+            <a href="{{route('products.index')}}" class="list-group-item list-group-item-action {{request()->is('admin/products') ? 'active' : ''}}">Products</a>
+            <a href="{{route('product-galleries.index')}}" class="list-group-item list-group-item-action {{request()->is('admin/product-galleries*') ? 'active' : ''}}">Galleries</a>
             <a href="{{route('categories.index')}}" class="list-group-item list-group-item-action {{request()->is('admin/categories*') ? 'active' : ''}}">Categories</a>
             <a href="#" class="list-group-item list-group-item-action">Transactions</a>
-            <a href="#" class="list-group-item list-group-item-action">Users</a>
+            <a href="{{route('users.index')}}" class="list-group-item list-group-item-action {{request()->is('admin/users*') ? 'active' : ''}}">Users</a>
             <a href="/index.html" class="list-group-item list-group-item-action">Sign Out</a>
           </div>
         </div>
