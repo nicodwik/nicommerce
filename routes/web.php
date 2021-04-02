@@ -29,24 +29,36 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('categorie
 Route::get('/categories/{slug}', [CategoryController::class, 'detail'])->name('categories-detail');
 Route::get('/details/{id?}', [DetailController::class, 'index'])->name('detail');
 Route::post('/details/add/{id?}', [DetailController::class, 'add'])->name('detail-add');
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart-delete');
 Route::get('/success', [CartController::class, 'index'])->name('success');
-Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout');
 Route::post('/checkout/callback', [CheckoutController::class, 'callback'])->name('midtrans-callback');
 
 Route::get('/register/success', [RegisterController::class, 'success'])->name('register-success');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/dashboard/products', [DashboardProductController::class, 'index'])->name('dashboard-products');
-Route::get('/dashboard/products/create', [DashboardProductController::class, 'create'])->name('dashboard-products-create');
-Route::get('/dashboard/products/{id}', [DashboardProductController::class, 'details'])->name('dashboard-products-details');
 
-Route::get('/dashboard/transactions', [DashboardTransactionController::class, 'index'])->name('dashboard-transactions');
-Route::get('/dashboard/transactions/details/{id}', [DashboardTransactionController::class, 'details'])->name('dashboard-transactions-details');
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart-delete');
 
-Route::get('/dashboard/settings', [DashboardSettingController::class, 'store'])->name('dashboard-settings-store');
-Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])->name('dashboard-settings-account');
-Route::prefix('admin')->group(function () {
+    Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout');
+    
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/products', [DashboardProductController::class, 'index'])->name('dashboard-products');
+    Route::get('/dashboard/products/create', [DashboardProductController::class, 'create'])->name('dashboard-products-create');
+    Route::post('/dashboard/products/store', [DashboardProductController::class, 'store'])->name('dashboard-products-store');
+    Route::put('/dashboard/products/update/{id}', [DashboardProductController::class, 'update'])->name('dashboard-products-update');
+    Route::post('/dashboard/products/gallery/upload', [DashboardProductController::class, 'uploadGallery'])->name('dashboard-products-gallery-upload');
+    Route::get('/dashboard/products/gallery/delete/{id}', [DashboardProductController::class, 'deleteGallery'])->name('dashboard-products-gallery-delete');
+    Route::get('/dashboard/products/{id}', [DashboardProductController::class, 'details'])->name('dashboard-products-details');
+    
+    Route::get('/dashboard/transactions', [DashboardTransactionController::class, 'index'])->name('dashboard-transactions');
+    Route::get('/dashboard/transactions/details/{id}', [DashboardTransactionController::class, 'details'])->name('dashboard-transactions-details');
+    
+    Route::get('/dashboard/settings', [DashboardSettingController::class, 'store'])->name('dashboard-settings-store');
+    Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])->name('dashboard-settings-account');
+});
+
+
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\DasboardController::class, 'index'])->name('dashboard-admin');
     Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);

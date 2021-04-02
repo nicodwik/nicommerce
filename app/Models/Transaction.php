@@ -10,4 +10,14 @@ class Transaction extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    /**
+     * Get the user that owns the Transaction
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'users_id', 'id');
+    }
 }
