@@ -15,7 +15,9 @@
       <div class="dashboard-content" >
         <div class="row">
           <div class="col-12">
-            <form action="{{route('dashboard-settings-redirect', 'dashboard-settings-account')}}" method="POST" id="locations">
+            <form action="{{route('dashboard-settings-redirect', 'dashboard-settings-account')}}" method="POST" id="locations" enctype="multipart/form-data">
+              @csrf
+              @method('put')
               <div class="card">
                 <div class="card-body">
                   <div class="row">
@@ -77,7 +79,16 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Mobile</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{$user->phone}}">
+                        <input type="text" class="form-control" id="phone" name="phone_number" value="{{$user->phone}}">
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Avatar</label>
+                        <input type="file" class="form-control" name="avatar">
                       </div>
                     </div>
                   </div>

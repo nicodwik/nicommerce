@@ -27,9 +27,12 @@ class DashboardSettingController extends Controller
         ]);
     }
 
-    public function update(Requeest $request, $redirect)
+    public function update(Request $request, $redirect)
     {
         $data = $request->all();
+        if($request->has('avatar')) {
+            $data['avatar'] = $request->file('avatar')->store('assets/avatar', 'public');
+        }
         $item = Auth::user()->update($data);
 
         return redirect()->route($redirect);
