@@ -90,7 +90,7 @@ class CheckoutController extends Controller
         $order_id = $notification->order_id;
 
         $transaction = Transaction::where('code', $order_id)->first();
-        
+
         if($status == 'capture') {
             if($type == 'credit_card') {
                if($fraud == 'challenge') {
@@ -101,23 +101,23 @@ class CheckoutController extends Controller
             }
         }
         else if($status == 'settlement') {
-            $transaction->status = 'SUCCESS';
+            $transaction->transaction_status = 'SUCCESS';
         }
 
         else if($status == 'pending') {
-            $transaction->status = 'PENDING';
+            $transaction->transaction_status = 'PENDING';
         }
 
         else if($status == 'deny') {
-            $transaction->status = 'CANCELLED';
+            $transaction->transaction_status = 'CANCELLED';
         }
 
         else if($status == 'expire') {
-            $transaction->status = 'CANCELLED';
+            $transaction->transaction_status = 'CANCELLED';
         }
 
         else if($status == 'cancel') {
-            $transaction->status = 'CANCELLED';
+            $transaction->transaction_status = 'CANCELLED';
         }
         $transaction->save();
 
