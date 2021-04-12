@@ -29,7 +29,7 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('categorie
 Route::get('/categories/{slug}', [CategoryController::class, 'detail'])->name('categories-detail');
 Route::get('/details/{id?}', [DetailController::class, 'index'])->name('detail');
 Route::post('/details/add/{id?}', [DetailController::class, 'add'])->name('detail-add');
-Route::get('/success', [CartController::class, 'index'])->name('success');
+Route::get('/success', [CartController::class, 'success'])->name('success');
 Route::post('/checkout/callback', [CheckoutController::class, 'callback'])->name('midtrans-callback');
 
 Route::get('/register/success', [RegisterController::class, 'success'])->name('register-success');
