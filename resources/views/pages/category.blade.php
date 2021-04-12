@@ -18,7 +18,7 @@
                     <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="{{$loop->iteration * 100}}">
                         <a href="{{route('categories-detail', $category->slug)}}" class="component-categories d-block">
                         <div class="categories-image">
-                            <img src="{{Storage::disk('s3')->url($category->photo)}}" alt="" class="w-100">
+                            <img src="{{Storage::url($category->photo)}}" alt="" class="w-100">
                             <p class="categories-text">{{$category->name}}</p>
                         </div>
                         </a>
@@ -46,7 +46,7 @@
                         <a href="{{route('detail', $product->slug)}}" class="component-products d-block">
                         <div class="products-thumbnail">
                             @if ($product->galleries->count())
-                                <div class="products-image" style="background-image: url('{{Storage::disk('s3')->url($product->galleries->first()->photo)}}');"></div>
+                                <div class="products-image" style="background-image: url('{{Storage::url($product->galleries->first()->photo)}}');"></div>
                             @endif
                                 <div class="products-image" style="background-image: url('https://picsum.photos/id/237/200/300');"></div>
                         </div>

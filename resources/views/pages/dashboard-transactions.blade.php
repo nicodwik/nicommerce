@@ -31,7 +31,7 @@
                     <div class="card-body">
                       <div class="row">
                         <div class="col-md-1">
-                          <img src="{{Storage::disk('s3')->url($transaction->product->galleries->first()->photo) ?? ''}}" class="w-50" alt="">
+                          <img src="{{Storage::url($transaction->product->galleries->first()->photo) ?? ''}}" class="w-50" alt="">
                         </div>
                         <div class="col-md-4">{{$transaction->product->name}}</div>
                         <div class="col-md-3">{{$transaction->product->user->name}}</div>
@@ -50,7 +50,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-1">
-                        <img src="{{Storage::disk('s3')->url($transaction->product->galleries->first()->photo) ?? ''}}" class="w-50" alt="">
+                        <img src="{{Storage::url($transaction->product->galleries->first()->photo) ?? ''}}" class="w-50" alt="">
                       </div>
                       <div class="col-md-4">{{$transaction->product->name}}</div>
                       <div class="col-md-3">{{$transaction->product->user->name}}</div>

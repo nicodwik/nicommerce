@@ -69,7 +69,7 @@
                   @forelse ($product->galleries as $gallery)
                     <div class="col-md-4">
                       <div class="gallery-container">
-                        <img src="{{Storage::disk('s3')->url($gallery->photo)}}" class="w-100" alt="">
+                        <img src="{{Storage::url($gallery->photo)}}" class="w-100" alt="">
                         <a href="{{route('dashboard-products-gallery-delete', $gallery->id)}}" class="delete-gallery">
                           <img src="/images/icon-delete.svg" alt="">
                         </a>

@@ -19,7 +19,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-12 col-md-4">
-                    <img src="{{Storage::disk('s3')->url($transaction->product->galleries->first()->photo) ?? ''}}" class="w-100 mb-3" alt="">
+                    <img src="{{Storage::url($transaction->product->galleries->first()->photo) ?? ''}}" class="w-100 mb-3" alt="">
                   </div>
                   <div class="col-12 col-md-8">
                     <div class="row">

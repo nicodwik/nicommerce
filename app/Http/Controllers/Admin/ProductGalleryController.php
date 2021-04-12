@@ -45,7 +45,7 @@ class ProductGalleryController extends Controller
                     </div>
                 '; 
             })->editColumn('photo', function($item) {
-                return $item->photo ? '<img src="'. Storage::disk('s3')->url($item->photo) .'" style="max-height:40px;" />' : ''; 
+                return $item->photo ? '<img src="'. Storage::url($item->photo) .'" style="max-height:40px;" />' : ''; 
             })
             ->rawColumns(['action', 'photo'])->make();
         }
@@ -75,7 +75,7 @@ class ProductGalleryController extends Controller
     public function store(ProductGalleryRequest $request)
     {
         $data = $request->all();
-        $data['photo'] = $request->file('photo')->store('assets/product', 's3', 'public' );
+        $data['photo'] = $request->file('photo')->store('assets/product', 'public' );
 
         ProductGallery::create($data);
 

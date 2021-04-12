@@ -47,7 +47,7 @@
                     <div class="card-body">
                       <div class="row">
                         <div class="col-md-1">
-                          <img src="{{Storage::disk('s3')->url($transaction->product->galleries->first()->photo ?? '')}}" class="" width="50px" alt="">
+                          <img src="{{Storage::url($transaction->product->galleries->first()->photo ?? '')}}" class="" width="50px" alt="">
                         </div>
                         <div class="col-md-4">{{$transaction->product->name}}</div>
                         <div class="col-md-3">{{$transaction->transaction->user->name}}</div>

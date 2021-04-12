@@ -43,7 +43,7 @@ class DashboardProductController extends Controller
 
         $gallery = [
             'products_id' => $product->id,
-            'photo' => $request->file('photo')->store('asset/gallery', 's3', 'public'),
+            'photo' => $request->file('photo')->store('asset/gallery', 'public'),
         ];
 
         ProductGallery::create($gallery);
@@ -65,7 +65,7 @@ class DashboardProductController extends Controller
     {
         ProductGallery::create([
             'products_id' => $request->products_id,
-            'photo' => $request->file('photo')->store('asset/gallery', 's3', 'public'),
+            'photo' => $request->file('photo')->store('asset/gallery', 'public'),
         ]);
 
         return redirect()->route('dashboard-products-details', $request->products_id);

@@ -23,7 +23,7 @@
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
               <a href="{{route('dashboard-products-details', $product->id)}}" class="card card-dashboard-product d-block">
                 <div class="card-body">
-                  <img src="{{count($product->galleries) > 0 ? Storage::disk('s3')->url($product->galleries->first()->photo) : 'https://via.placeholder.com/150'}}" alt="" class="w-100 mb-2">
+                  <img src="{{count($product->galleries) > 0 ? Storage::url($product->galleries->first()->photo) : 'https://via.placeholder.com/150'}}" alt="" class="w-100 mb-2">
                   <div class="product-title">{{$product->name}}</div>
                   <div class="product-category">{{$product->category->name}}</div>
                 </div>

@@ -135,7 +135,7 @@
         @foreach ($product->galleries as $gallery)
           {
             id: {{$gallery->id}},
-            url: "{{Storage::disk('s3')->url($gallery->photo)}}"
+            url: "{{Storage::url($gallery->photo)}}"
           },
         @endforeach
       ]

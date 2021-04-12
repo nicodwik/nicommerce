@@ -46,7 +46,7 @@
                       <tr>
                         <td style="width: 20%;">
                           @if ($cart->product->galleries)
-                            <img src="{{Storage::disk('s3')->url($cart->product->galleries->first()->photo)}}" alt="" class="cart-image">
+                            <img src="{{Storage::url($cart->product->galleries->first()->photo)}}" alt="" class="cart-image">
                           @endif
                         </td>
                         <td style="width: 35%;">
