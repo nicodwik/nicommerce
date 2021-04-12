@@ -78,7 +78,6 @@ class CheckoutController extends Controller
     }
 
     public function callback(Request $request) {
-
         Config::$serverKey = config('services.midtrans.serverKey');
         Config::$isProduction = config('services.midtrans.isProduction');
         Config::$isSanitized = config('services.midtrans.isSanitized');
@@ -90,8 +89,8 @@ class CheckoutController extends Controller
         $fraud = $notification->fraud_status;
         $order_id = $notification->order_id;
 
-        $transaction = Transaction::find($order_id);
-
+        $transaction = Transaction::where('code', $order_id)->first();
+        
         if($status == 'capture') {
             if($type == 'credit_card') {
                if($fraud == 'challenge') {
@@ -101,7 +100,6 @@ class CheckoutController extends Controller
                 }
             }
         }
-        
         else if($status == 'settlement') {
             $transaction->status = 'SUCCESS';
         }
