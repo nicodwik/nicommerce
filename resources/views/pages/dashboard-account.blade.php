@@ -79,7 +79,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="">Mobile</label>
-                        <input type="text" class="form-control" id="phone" name="phone_number" value="{{$user->phone}}">
+                        <input type="text" class="form-control" id="phone" name="phone_number" value="{{$user->phone_number}}">
                       </div>
                     </div>
                   </div>
@@ -117,7 +117,7 @@
       data: {
         provinces: null,
         regencies: null,
-        provinces_id: null,
+        provinces_id: '{{$user->provinces_id ?? ''}}',
         regencies_id: null,
       },
       mounted() {

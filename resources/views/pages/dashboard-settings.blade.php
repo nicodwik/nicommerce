@@ -15,7 +15,8 @@
         <div class="dashboard-content">
           <div class="row">
             <div class="col-12">
-              <form action="{{route('dashboard-settings-redirect', dashboard-settings-store)}}" method="POST">
+              <form action="{{route('dashboard-settings-redirect', 'dashboard-settings-store')}}" method="POST">
+                @method('put')
                 @csrf
                 <div class="card">
                   <div class="card-body">
@@ -29,7 +30,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Category</label>
-                          <select name="category" class="form-control">
+                          <select name="categories_id" class="form-control">
                             @foreach ($categories as $category)
                               <option value="{{$category->id}}" {{$user->categories_id == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
                             @endforeach
@@ -47,7 +48,7 @@
                             <label class="custom-control-label" for="openStoreTrue">Buka</label>
                           </div>
                           <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" name="is_store_open" id="openStoreFalse" value="0" {{$user->store_status == 0 || $user->store_status == null ? 'checked' : ''}}>
+                            <input type="radio" class="custom-control-input" name="store_status" id="openStoreFalse" value="0" {{$user->store_status == 0 || $user->store_status == null ? 'checked' : ''}}>
                             <label class="custom-control-label" for="openStoreFalse">Sementara tutup</label>
                           </div>
                         </div>
