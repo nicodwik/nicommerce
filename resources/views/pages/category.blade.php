@@ -8,32 +8,35 @@
     <div class="page-content page-home" style="margin-top: 100px;">
         <section class="store-trend-categories">
         <div class="container">
-            <div class="row">
-            <div class="col-12" data-aos="fade-up">
-                <h5>All Categories</h5>
-            </div>
-            </div>
-            <div class="row">
-                @forelse ($categories as $category)
-                    <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="{{$loop->iteration * 100}}">
-                        <a href="{{route('categories-detail', $category->slug)}}" class="component-categories d-block">
-                        <div class="categories-image">
-                            <img src="{{Storage::url($category->photo)}}" alt="" class="w-100">
-                            <p class="categories-text">{{$category->name}}</p>
-                        </div>
-                        </a>
+            @if (!isset($category_data))
+                <div class="row">
+                    <div class="col-12" data-aos="fade-up">
+                        <h5>All Categories</h5>
                     </div>
-                @empty
-                    
-                @endforelse
-            </div>
+                </div>
+                <div class="row">
+                    @forelse ($categories as $category)
+                        <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="{{$loop->iteration * 100}}">
+                            <a href="{{route('categories-detail', $category->slug)}}" class="component-categories d-block">
+                            <div class="categories-image">
+                                <img src="{{Storage::url($category->photo)}}" alt="" class="w-100">
+                                <p class="categories-text">{{$category->name}}</p>
+                            </div>
+                            </a>
+                        </div>
+                    @empty
+                        
+                    @endforelse
+                </div>
+            @endif
+            
         </div>
         </section>
         <section class="store-new-products">
         <div class="container">
             <div class="row">
             <div class="col-12" data-aos="fade-up">
-                @if ($category_data)
+                @if (isset($category_data))
                     <h5>All Products from {{$category_data->name}}</h5>
                 @else
                     <h5>All Products</h5>
