@@ -21,6 +21,7 @@
         "league/flysystem-aws-s3-v3": "~1.0",
         "midtrans/midtrans-php": "^2.3",
         "sentry/sentry-laravel": "^2.3",
+        "spatie/laravel-backup": "^6.16",
         "yajra/laravel-datatables": "^1.5",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
